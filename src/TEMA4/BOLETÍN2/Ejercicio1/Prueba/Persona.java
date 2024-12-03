@@ -1,82 +1,56 @@
-package TEMA4.BOLETÍN2.Ejercicio1;
+package TEMA4.BOLETÍN2.Ejercicio1.Prueba;
 
 import java.time.LocalDate;
 
 public class Persona {
     private String nombre;
+    private LocalDate fechaNacimiento;
     private String dni;
     private char sexo;
-    private float altura, peso;
-    private LocalDate fechaDeNacimiento;
+    private float altura;
+    private float peso;
 
-    //generamos el constructor de persona.
-    public Persona() {//el constructor está vacio porque le pido al usuario que introduzca los datos.
-    }
+    public Persona(String nombre, String dni, char sexo, float altura, float peso) throws Exception {
 
-    public void setFechaDeNacimiento(int year, int month, int day) {
-        this.fechaDeNacimiento = LocalDate.of(year, month, day);
-    }
-
-    public LocalDate getFechaDeNacimiento() {
-        return fechaDeNacimiento;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
 
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) throws PersonaException {
-        if (peso <= 0) {
-            throw new PersonaException("el peso no puede ser menor o igual a 0");
+        if (dni.length() > 8) {
+            this.dni = dni;
+            throw new PersonaException("Porfavor introduzca bien su DNI");
+        } else {
+            this.dni = dni;
         }
 
-        this.peso = peso;
-    }
-
-    public float getAltura() {
-        return altura;
-    }
-
-    public void setAltura(float altura) throws PersonaException {
-        if (altura <= 0) {
-            throw new PersonaException("la altura no puede ser menor o igual a 0");
+        if (sexo != 'M' || sexo != 'F') {
+            throw new PersonaException("Porfavor introduzca su sexo");
+        } else {
+            this.sexo = sexo;
         }
 
-        this.altura = altura;
-    }
-
-    public char getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) throws PersonaException {
-        if (dni.length() != 8) {
-            throw new PersonaException("el DNI debe tener 8 números");
+        if (altura < 1) {
+            throw new PersonaException("No puedes medir menos de 1 cm");
+        } else {
+            this.altura = altura;
         }
-        this.dni = dni;
+
+        if (peso < 1) {
+            throw new PersonaException("No puedes pesar menos de 1kg");
+        }
     }
 
-    public double getIMC() {
-        return peso / Math.pow(altura, 2);
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public char letraDNI() {
+    public void setFechaNacimiento(int year, int month, int day) {
+        this.fechaNacimiento = LocalDate.of(year, month, day);
+    }
+
+    public float IMC(){
+        return (float)(peso/(Math.pow(altura, 2)));
+    }
+
+    public char letraDni() {
         int letraDNI = Integer.parseInt(dni) % 23;
         char letra;
 
@@ -130,3 +104,4 @@ public class Persona {
         return letra;
     }
 }
+
