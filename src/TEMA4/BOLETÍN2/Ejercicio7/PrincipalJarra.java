@@ -1,3 +1,33 @@
+/*
+7. Crear una clase Jarra que utilizaremos para simular algunas de las acciones que
+podemos realizar con una jarra. Cada jarra tiene una determinada capacidad (en
+litros). Además una jarra dispondrá de una cantidad de agua que podrá ir variando a
+medida que realicemos operaciones con ellas. Las jarras se crearán siempre vacías.
+Las acciones que podremos realizar sobre una jarra son:
+Llenar la jarra por completo desde un grifo.
+Vaciarla por completo.
+Volcar el contenido de una jarra en otra.
+Por ejemplo: Disponemos de dos jarras A y B de capacidades 7 y 4 litros
+respectivamente. Podemos llenar la jarra A (no podemos echar menos del total de la
+jarra porque no sabríamos a ciencia cierta cuánta agua tendría). Luego volcar A sobre B
+(no cabe todo por lo que en A quedan 3 litros y B está llena). Ahora vaciar B. Despues
+volver a volcar A sobre B. En esta situación, A está vacía y B tiene 3 litros.
+Además se debe guardar en la clase Jarra el total de agua que se ha consumido
+llenando objetos Jarra.
+Realizar un programa que cree dos jarras A y B (solicitando las capacidades por teclado)
+inicialmente vacías. Después se realizará un menú que permita:
+a. Llenar jarra: Se solicitará con la pregunta “¿Qué jarra desea llenar (A/B)?” y se
+llenará la jarra correspondiente.
+b. Vaciar jarra: Se realizará la pregunta “¿Qué jarra desea vaciar (A/ B)?” y se
+vaciará la jarra correspondiente.
+c. Volcar jarra A en B .
+d. Volcar jarra B en A.
+e. Ver estado de las jarras: Se mostrará la capacidad y el agua que contiene,
+tanto para la jarra A como para la B.
+f. Salir: Cuando salga debe mostrarse un mensaje que indique "El total de agua
+que se ha gastado llenando jarras es XXX litros".
+*/
+
 package TEMA4.BOLETÍN2.Ejercicio7;
 
 import java.util.Scanner;

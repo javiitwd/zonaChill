@@ -2,7 +2,6 @@ package TEMA4.BOLETÍN2.Ejercicio6;
 
 public class Producto {
 
-
     private static final double IVA = 0.20;
     private static int productosCreados = 0;
 
@@ -43,16 +42,11 @@ public class Producto {
 
     public double calculoPrecio() {
 
-        return precioBase;
+        return precioBase + (precioBase*IVA);
     }
 
     public String toString() {
 
-        return "Producto{" +
-                "id=" + idProducto +
-                ", descripcion=" + descripcion +"\'" +
-                ", precioBase=" + precioBase +
-                "}";
+        return "Producto{ id=" + idProducto + ", descripcion=" + descripcion +"\'" + ", precioBase=" + precioBase + "}";
     }
 }
-

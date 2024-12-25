@@ -21,11 +21,10 @@ public class PrincipalProducto {
         Producto producto1 = new Producto("Leche", 9.38);
         Producto producto2 = new Producto("Pan", 3.30);
 
-        System.out.println(producto1);
+        System.out.println(producto1); //Llama al metodo to.String
         System.out.println(producto1.calculoPrecio() + "€");
 
         System.out.println(producto2);
         System.out.println(producto2.calculoPrecio() + "€");
     }
 }
-
