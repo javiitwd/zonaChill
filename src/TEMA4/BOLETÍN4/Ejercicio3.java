@@ -26,7 +26,7 @@ public class Ejercicio3 {
 
     public static boolean esIgual(String cadena) {
         for (int i = 0; i < cadena.length(); i++) {
-            if (cadena.charAt(i) != cadena.charAt(cadena.length() - i -1)) {
+            if (cadena.charAt(i) != cadena.charAt(cadena.length() - i - 1)) {
                 return false;
             }
         }
@@ -35,7 +35,7 @@ public class Ejercicio3 {
 
     public static boolean esReverso(String cadena) {
         //Convertimos cadena a String builder para poder usar el metodo reverse,
-        // y el toString() es para convertir elStringBuilder en Srting
+        // y el toString() es para convertir elStringBuilder en String
         String palabraAlReves = new StringBuilder(cadena).reverse().toString();
 
         //Compara si plabaraAlReves es igual a cadena

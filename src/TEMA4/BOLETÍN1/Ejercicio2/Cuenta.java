@@ -16,9 +16,9 @@ package TEMA4.BOLETÍN1.Ejercicio2;
 public class Cuenta {
     private String numeroDeCuenta; //Almacena el numero de cuenta
     private String titular; //Almacena el nombre del titular de la cuenta
-    private double saldo; // el saldo actual de la cuenta
-    private int contadorRetirada; // contador que guarda el numero de veces que se ha retirado dinero
-    private int contadorIngreso; // contador que guarda el numero de veces que se ha ingresado dinero.
+    protected double saldo; // el saldo actual de la cuenta
+    protected int contadorRetirada; // contador que guarda el numero de veces que se ha retirado dinero
+    protected int contadorIngreso; // contador que guarda el numero de veces que se ha ingresado dinero.
 
     /*Constructor cuenta.
     Recibe el numero de cuenta, titulr y un saldo inicial.

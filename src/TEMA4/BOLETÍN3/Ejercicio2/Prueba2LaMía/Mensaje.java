@@ -1,4 +1,4 @@
-package TEMA4.BOLETÍN3.Ejercicio2;
+package TEMA4.BOLETÍN3.Ejercicio2.Prueba2LaMía;
 
 import java.time.LocalDate;
 
@@ -12,28 +12,8 @@ public class Mensaje {
     public Mensaje(String asunto, String cuerpo, Persona remitente, Persona destinatario) {
         this.asunto = asunto;
         this.cuerpo = cuerpo;
+        this.fechaEnvio = LocalDate.now();
         this.remitente = remitente;
         this.destinatario = destinatario;
-        this.fechaEnvio = LocalDate.now();
-    }
-
-    public String getAsunto() {
-        return asunto;
-    }
-
-    public String getCuerpo() {
-        return cuerpo;
-    }
-
-    public LocalDate getFechaEnvio() {
-        return fechaEnvio;
-    }
-
-    public Persona getRemitente() {
-        return remitente;
-    }
-
-    public Persona getDestinatario() {
-        return destinatario;
     }
 }

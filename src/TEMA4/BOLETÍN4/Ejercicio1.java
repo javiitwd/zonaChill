@@ -10,7 +10,8 @@ public class Ejercicio1 {
         String cadena = sc.next();
         System.out.println("Introduce un caracter");
         char caracter = sc.next().charAt(0);
-
+        cadena = cadena.toLowerCase();
+        caracter = Character.toLowerCase(caracter);
         int contador = 0;
         for (int i = 0; i <cadena.length(); i++) {
             if (cadena.charAt(i) == caracter){
@@ -18,6 +19,6 @@ public class Ejercicio1 {
             }
         }
 
-        System.out.println("La el caracter " +caracter+ " se repite " +contador+ " vecs");
+        System.out.println("La el caracter " +caracter+ " se repite " +contador+ " veces");
     }
 }
