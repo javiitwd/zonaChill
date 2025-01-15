@@ -74,11 +74,11 @@ public class MenuVehiculos {
                     }
 
                     if (nuevoVehiculo != null) {
-
                         //Guardamos el total de vehiculos y nos aseguramos de que sea menor que el total
                         int totalVehiculos = empresaVehiculos.totalDeVehiculosActuales();
+
+                        //Si hay hueco, el la siguiente posicion al total meto el coche nuevo
                         if (totalVehiculos < empresaVehiculos.MAX_VEHICULOS) {
-                            //Si hay hueco, el la siguiente posicion al total meto el coche nuevo
                             empresaVehiculos.almacenDeVehiculos[totalVehiculos] = nuevoVehiculo;
                             System.out.println("Vehículo registrado con matrícula: " + matricula);
                         } else {

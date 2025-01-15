@@ -8,11 +8,10 @@ public class empresaVehiculos {
         almacenDeVehiculos = new Vehiculo[200];
     }
 
-    public int totalDeVehiculosActuales(){
+    public int totalDeVehiculosActuales() {
         int vehiculosEncontrados = 0;
         for (int i = 0; i < almacenDeVehiculos.length; i++) {
-
-            if (almacenDeVehiculos[i] != null){
+            if (almacenDeVehiculos[i] != null) {
                 vehiculosEncontrados++;
             } else {
                 return vehiculosEncontrados;
@@ -25,8 +24,10 @@ public class empresaVehiculos {
 
         for (int i = 0; i < totalDeVehiculosActuales(); i++) {
             String matriculaDelCocheActual = almacenDeVehiculos[i].getMatricula();
-            if (matricula.equals(matriculaDelCocheActual)){
+            if (matricula.equals(matriculaDelCocheActual)) {
 
+                //Segun el tipo de vehiculo, calculara el precio del alquiler, en funcion de como lo hayamos puesto
+                //Es decir, analiza el tipo del coche[i] y le hace el calcularPrecioAlquiler en funcion al tipo de coche
                 return almacenDeVehiculos[i].calcularPrecioDeAlquiler(diasAquilado);
             }
         }
