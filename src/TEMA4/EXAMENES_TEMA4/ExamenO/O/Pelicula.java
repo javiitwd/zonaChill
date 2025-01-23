@@ -90,4 +90,18 @@ public class Pelicula {
     public void setValoracion(double valoracion) {
         this.valoracion = valoracion;
     }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" +
+                "titulo='" + titulo + '\'' +
+                ", yearEstreno=" + yearEstreno +
+                ", director='" + director + '\'' +
+                ", presupuesto=" + presupuesto +
+                ", recaudacion=" + recaudacion +
+                ", siponsis='" + siponsis + '\'' +
+                ", etiquetas='" + etiquetas + '\'' +
+                ", valoracion=" + valoracion +
+                '}';
+    }
 }

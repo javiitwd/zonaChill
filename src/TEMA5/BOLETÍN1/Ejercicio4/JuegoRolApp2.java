@@ -1,72 +1,75 @@
 package TEMA5.BOLETÍN1.Ejercicio4;
 
-public class JuegoRolApp {
-    public static void main(String[] args) throws JuegoRolException {
+import java.util.Arrays;
 
-        try {
-            Traza razaMago1 = Traza.values()[0];
-            Traza razaMago2 = Traza.values()[1];
-            Traza razaClerigo1 = Traza.values()[2];
+public class JuegoRolApp2 {
 
-            Mago mago1 = new Mago(15, 18, 15, razaMago1, "Villalba");
-            Mago mago2 = new Mago(15, 18, 15, razaMago2, "Villalba2");
-            Clerigo clerigo1 = new Clerigo(15, 15, 19, razaClerigo1, "Villalba3", "juntaDeAndalucia");
+    private static final int MAX_PERSONAJES_JUEGO = 200;
+    Personaje[] personajes;
 
-            System.out.println("Magos aprendiendo hechizos...");
-            mago1.aprendeHehizo("Vonneuman");
-            mago1.aprendeHehizo("Vonneuman Plus!!!");
-            mago2.aprendeHehizo("La vida es la vida y la vida fluye");
+    public JuegoRolApp2() {
+        personajes = new Personaje[MAX_PERSONAJES_JUEGO];
+    }
 
-            System.out.println("Datos del mago 1: ");
-            System.out.println("Datos del mago 1: " + mago1);
+    public Personaje[] getPersonajes() {
+        return personajes;
+    }
 
-            System.out.println("Datos del mago 2: ");
-            System.out.println("Datos del mago 2: " + mago2);
+    private int posicionLibre() throws JuegoRolException {
+        for (int i = 0; i < personajes.length; i++) {
 
-            System.out.println("Mago 1 lanza hechizo al mago 2!!!");
-            mago1.lanzaHechizo(mago2, "Vonneuman");
-
-            System.out.println("Mago 2 contraataca y le lanza hechizp al mago 1!!!");
-            mago2.lanzaHechizo(mago1, "La vida es la vida y la vida fluye");
-
-            System.out.println("No me lo creo! el clerigo llega para curar al mago 2!!!");
-            clerigo1.curar(mago2);
-
-            System.out.println("GUAU! EL MAGO 1 VUELVE A LANZAR UN HECHIZO A MAGO 2!!!");
-            mago1.lanzaHechizo(mago2, "Vonneuman Plus!!!");
-
-            System.out.println("La batalla... HA TERMIANDO, Estos son los resultados: ");
-
-            System.out.println("Datos del mago 1: ");
-            System.out.println("Datos del mago 1: " + mago1);
-
-            System.out.println("Datos del mago 2: ");
-            System.out.println("Datos del mago 2: " + mago2);
-
-            System.out.println("Datos del clerigo 1: ");
-            System.out.println("Datos del clérigo: " + clerigo1);
-
-        } catch (JuegoRolException e) {
-            System.out.println(e.getMessage());
+            if (personajes[i] == null) {
+                return i;
+            }
         }
+        throw new JuegoRolException("No hay posiciones libres");
+    }
+
+    public void anadirPersonaje(Personaje personajeAAnadir) throws JuegoRolException {
+
+        personajes[posicionLibre()] = personajeAAnadir;
+    }
+
+    public Mago[] devolverMagos() {
+
+        int contadorDeMagos = 0;
+        Mago[] magos = new Mago[MAX_PERSONAJES_JUEGO];
+        for (int i = 0; i < personajes.length; i++) {
+
+            if (personajes[i] instanceof Mago) {
+                magos[contadorDeMagos++] = (Mago) personajes[i];
+            }
+        }
+        return Arrays.copyOfRange(magos, 0, contadorDeMagos);
+    }
+
+    public Personaje buscarPersonajePorNombre(String nombre) throws JuegoRolException {
+
+        for (int i = 0; i < personajes.length; i++) {
+
+            if (personajes[i].getNombre().equalsIgnoreCase(nombre)) {
+                return personajes[i];
+            }
+        }
+        throw new JuegoRolException("Personaje no encontrado");
+    }
+
+    public Clerigo[] devolverClerigos() {
+
+        int contadorDeClerigos = 0;
+        Clerigo[] clerigos = new Clerigo[MAX_PERSONAJES_JUEGO];
+        for (int i = 0; i < personajes.length; i++) {
+
+            if (personajes[i] instanceof Clerigo) {
+                clerigos[contadorDeClerigos++] = (Clerigo) personajes[i];
+            }
+        }
+        return Arrays.copyOfRange(clerigos, 0, contadorDeClerigos);
+    }
+
+    public Personaje[] personajesOrdenadosPorVidaActual() {
+
+        Arrays.sort(personajes);
+        return personajes;
     }
 }
-
-
-
-/*
-        EL TOSTRING SUSTITUYE A TODO ESTO
-        System.out.println("Datos del mago 1: ");
-        System.out.println("Nombre: " +mago1.getNombre());
-        System.out.println("Puntos de vida actuales: " +mago1.getPuntoVidaActuales());
-        System.out.println("Raza: " +mago1.getRaza());
-        System.out.println("Fuerza: " +mago1.getFuerza());
-        System.out.println("Inteligencia: " +mago1.getInteligencia());
-
-        System.out.println("Datos del mago 2: ");
-        System.out.println("Nombre: " +mago2.getNombre());
-        System.out.println("Puntos de vida actuales: " +mago2.getPuntoVidaActuales());
-        System.out.println("Raza: " +mago2.getRaza());
-        System.out.println("Fuerza: " +mago2.getFuerza());
-        System.out.println("Inteligencia: " +mago2.getInteligencia());
- */

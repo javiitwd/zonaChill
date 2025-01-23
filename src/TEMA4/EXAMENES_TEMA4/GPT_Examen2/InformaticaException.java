@@ -1,7 +1,7 @@
-package TEMA4.EXAMENES_TEMA4.GPT_EXAMEN2;
+package TEMA4.EXAMENES_TEMA4.GPT_Examen2;
 
-public class InformaticaException extends RuntimeException {
-  public InformaticaException(String message) {
-    super(message);
-  }
+public class InformaticaException extends Exception {
+    public InformaticaException(String message) {
+        super(message);
+    }
 }

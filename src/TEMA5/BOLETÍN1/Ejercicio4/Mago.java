@@ -1,10 +1,10 @@
-package TEMA5.BOLETÍN1.Ejercicio3;
+package TEMA5.BOLETÍN1.Ejercicio4;
 
 public class Mago extends Personaje {
     private static final int SPELL_DAMAGE = 10;
     private static final int MAX_HECHIZOS = 4;
-    private final int MIN_INTELIGENCIA_MAGO = 17;
-    private final int MAX_FUERZA_MAGO = 15;
+    public static final int MIN_INTELIGENCIA_MAGO = 17;
+    public static final int MAX_FUERZA_MAGO = 15;
     private Hechizo[] hechizosAprendidos;
 
     public Mago(int vidaMaxima, int inteligencia, int fuerza, Traza raza, String nombre) throws JuegoRolException {

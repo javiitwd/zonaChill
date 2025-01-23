@@ -9,6 +9,7 @@ public class Juego {
     public Juego() {
         //Sacamos el numero de cartas que tendra la baraja
         baraja = new Carta[12 * Carta.PALOS.length];
+
         for (int i = 0; i < Carta.PALOS.length; i++) {
             for (int j = 1; j <= 12; j++) {
                 //Le metemos a la baraja la primera carta del primer palo que vamos a mirar...
@@ -40,3 +41,13 @@ public class Juego {
         }
     }
 }
+/*
+EXPLICACION!
+- Cuando se llama sb.append(baraja[i]), el objeto baraja[i]
+se convierte automáticamente en una cadena de texto.
+Si la clase de los objetos tiene un metodo toString() sobrescrito, se usará esa implementación.
+Es decir no mete Oro 1 sino que mete 1 de 0ro,
+ya que antes de meter objeto lo pasa por el toString()
+
+- Por ultimo lo convertimos a String para poder devolverlo
+*/

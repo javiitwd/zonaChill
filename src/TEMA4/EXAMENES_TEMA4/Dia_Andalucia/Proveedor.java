@@ -1,4 +1,4 @@
-package TEMA4.EXAMENES_TEMA4.Dia_Andalucia;
+/*package TEMA4.EXAMENES_TEMA4.Dia_Andalucia;
 
 public class Proveedor {
 
@@ -39,7 +39,7 @@ public class Proveedor {
     /**
      * @return Si usas toString generate via wizard te lo pone solo!!!
      */
-
+/*
     @Override
     public String toString() {
         return "Proveedor{" +
@@ -54,3 +54,4 @@ public class Proveedor {
 
     }
 }
+*/

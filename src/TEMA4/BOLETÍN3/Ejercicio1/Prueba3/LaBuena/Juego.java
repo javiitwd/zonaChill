@@ -46,11 +46,12 @@ public class Juego {
         if (numJugadores * CARTAS_A_REPARTIR > baraja.length) {
             System.out.println("No hay suficiente cartas");
         }
-        Random random = new Random();
+        int cartasRepartidas = 0;
         for (int i = 1; i <= numJugadores; i++) {
             for (int j = 1; j <= CARTAS_A_REPARTIR; j++) {
-                int cartaDelJugador = random.nextInt(baraja.length);
-                System.out.println("El jugador " + i + " tendrá las cartas: " + baraja[cartaDelJugador]);
+                Carta cartaDelJugador = baraja[cartasRepartidas];
+                System.out.println("El jugador " + i + " tendrá las cartas: " + cartaDelJugador);
+                cartasRepartidas++;
             }
             System.out.println();
         }
@@ -60,3 +61,14 @@ public class Juego {
         return baraja.length - numJugadores * CARTAS_A_REPARTIR;
     }
 }
+
+/*
+EXPLICACION!
+- Cuando se llama sb.append(baraja[i]), el objeto baraja[i]
+se convierte automáticamente en una cadena de texto.
+Si la clase de los objetos tiene un metodo toString() sobrescrito, se usará esa implementación.
+Es decir no mete Oro 1 sino que mete 1 de 0ro,
+ya que antes de meter objeto lo pasa por el toString()
+
+- Por ultimo lo convertimos a String para poder devolverlo
+*/

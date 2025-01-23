@@ -3,9 +3,9 @@ package TEMA5.BOLETÍN1.Ejercicio3;
 public class Clerigo extends Personaje {
 
     private static int HECHIZO_DE_CURA = 10;
-    private final int MAX_INTELIGENCIA_CLERIGO = 16;
-    private final int MIN_INTELIGENCIA_CLERIGO = 12;
-    private final int MIN_FUERZA_CLERIGO = 18;
+    public static final int MAX_INTELIGENCIA_CLERIGO = 16;
+    public static final int MIN_INTELIGENCIA_CLERIGO = 12;
+    public static final int MIN_FUERZA_CLERIGO = 18;
     private String diosDelQueEsDevoto;
 
     public Clerigo(int vidaMaxima, int inteligencia, int fuerza, Traza raza, String nombre, String nombreDios) throws JuegoRolException {

@@ -1,10 +1,10 @@
-package TEMA5.BOLETÍN1.Ejercicio3;
+package TEMA5.BOLETÍN1.Ejercicio4;
 
 public class Personaje {
-    private static final int MAX_PUNTOS_APLICABLES = 20;
-    private static final int MIN_PUNTOS_APLICABLES = 0;
-    private static final int MAX_PUNTOS_VIDA = 100;
-    private static final int MIN_PUNTOS_VIDA = 0;
+    public static final int MAX_PUNTOS_APLICABLES = 20;
+    public static final int MIN_PUNTOS_APLICABLES = 0;
+    public static final int MAX_PUNTOS_VIDA = 100;
+    public static final int MIN_PUNTOS_VIDA = 0;
     private String nombre;
     private Traza raza;
     private int fuerza;

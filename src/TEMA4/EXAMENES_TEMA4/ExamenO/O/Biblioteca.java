@@ -1,5 +1,7 @@
 package TEMA4.EXAMENES_TEMA4.ExamenO.O;
 
+import java.util.Arrays;
+
 public class Biblioteca {
     public static final int CAPACIDAD_MAX_PELICULAS = 20;
     public Pelicula[] biblioteca;
@@ -66,23 +68,21 @@ public class Biblioteca {
                 return i;
             }
         }
-        throw new BibliotecaException("La película no se ecnuentra en la biblioteca");
+        throw new BibliotecaException("La película no se encuentra en la biblioteca");
     }
 
-    public void buscarPeliculaConMaxPresupuesto(double presupesuto) {
+    public void buscarPeliculaConMaxPresupuesto(double presupesuto) throws BibliotecaException {
 
+        boolean peliEncontrada = false;
         for (int i = 0; i < peliculasEnBiblioteca(); i++) {
 
             if (biblioteca[i].getPresupuesto() < presupesuto){
-                System.out.println("El título es: " + biblioteca[i].getTitulo());
-                System.out.println("El año de estreno es: " + biblioteca[i].getYearEstreno());
-                System.out.println("El directo es: " + biblioteca[i].getDirector());
-                System.out.println("El presupuesto es: " + biblioteca[i].getPresupuesto());
-                System.out.println("La recaudacion es: " + biblioteca[i].getRecaudacion());
-                System.out.println("El sinopsis es: " + biblioteca[i].getSiponsis());
-                System.out.println("La etiquetas son: " + biblioteca[i].getEtiquetas());
-                System.out.println("La valoracion es: " + biblioteca[i].getValoracion());
+                System.out.println(biblioteca[i].toString());
+                peliEncontrada = true;
             }
+        }
+        if (!peliEncontrada){
+            throw new BibliotecaException("Peli no encontrada");
         }
     }
 }
