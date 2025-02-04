@@ -7,7 +7,7 @@ public class MiEntradaSalida {
     public static Scanner sc = new Scanner(System.in);
 
     public static int solicitarEntero(String mensaje) {
-        // Variable que almacenar� el entero introducido por teclado.
+        // Variable que almacenara el entero introducido por teclado.
         int integer = 0;
         // Variable que almacenar� un booleano que indicar� si se le debe volver a pedir el dato al usuario.
         boolean flag = true;
@@ -15,7 +15,7 @@ public class MiEntradaSalida {
         while (flag) {
             // Pedimos el entero por pantalla.
             System.out.println(mensaje);
-            // Comprobamos si el usuario est� introduciendo algo correcto usando la excepci�n del m�todo parseInt.
+            // Comprobamos si el usuario est� introduciendo algo correcto usando la excepci�n del metodo parseInt.
             try {
                 integer = Integer.parseInt(sc.nextLine());
                 // Si llegamos hasta aqu�, es porque el usuario ha introducido un dato correcto y no se ha lanzado ninguna excepci�n.
@@ -80,7 +80,6 @@ public class MiEntradaSalida {
             }
 
         }
-
         return integer;
     }
 
@@ -103,9 +102,7 @@ public class MiEntradaSalida {
             catch (IndexOutOfBoundsException e) {
                 System.out.println("Ha introducido un dato incorrecto.");
             }
-
         }
-
         return c;
     }
 
@@ -131,7 +128,6 @@ public class MiEntradaSalida {
                 }
             }
         }
-
         return c;
     }
 
@@ -161,7 +157,6 @@ public class MiEntradaSalida {
         System.out.println(mensaje);
 
         for (int i = 0; i < strings.length; i++) {
-
             System.out.printf("%d: %s\n", i + 1, strings[i]);
         }
         return solicitarEnteroEnRango("Seleccione una opcion", 1, strings.length) - 1;
