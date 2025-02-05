@@ -3,7 +3,6 @@ package TEMA6.Boletín1.Ejercicio3;
 import java.util.*;
 
 public abstract class Persona {
-
     private String nombre;
     private int edad;
     private List<Mensaje> buzonEntrada;
@@ -38,45 +37,52 @@ public abstract class Persona {
     public abstract void enviarMensaje(Persona destinatario, String textoMensaje) throws MensajeriaException;
 
     public String leerMensajes() throws MensajeriaException {
-
         if (buzonEntrada.isEmpty()) {
             throw new MensajeriaException("No tiene mensajes");
         }
 
         StringBuilder todosLosMensajes = new StringBuilder();
-        for (Mensaje msj : buzonEntrada) {
 
-            todosLosMensajes.append(msj.toString()).append(System.lineSeparator());
+        //Creo la interfaz iterator
+        Iterator<Mensaje> it = buzonEntrada.iterator();
+
+        int contador = 1;
+
+        //hasNext te dice si hay siguiente
+        while (it.hasNext()) {
+            //Si hay siguiente avanzo
+            Mensaje m = it.next();
+            todosLosMensajes.append("Mensaje " + contador++ + ": \n");
+            todosLosMensajes.append(m.toString()).append(System.lineSeparator());
         }
         return todosLosMensajes.toString();
+
+        //Forma más facil y original
+                           /* for (Mensaje msj : buzonEntrada) {
+
+                               todosLosMensajes.append(msj.toString()).append(System.lineSeparator());
+                            }
+                            return todosLosMensajes.toString();*/
     }
 
     public String ordenarMensajes() {
-
         //Para no modificar los mensajes del buzon original al ordenarlos, creamos otro
         List<Mensaje> mensajesOrdenados = buzonEntrada;
 
         StringBuilder mensajesOrdenadosConjunto = new StringBuilder();
 
-        //Llamos al metodo sort de la clase Collection para odernar los mensajes
-        //por parametro le indicamos la coleccion y el comparador <con el tipo de objeto>
-        Collections.sort(mensajesOrdenados, new Comparator<Mensaje>() {
+        /*
+         * sort(): Es un metodo de la interfaz List que se utiliza para ordenar los
+         * elementos de la lista en su orden natural, es decir, según el criterio de
+         * ordenación que tenga cada tipo de objeto dentro de la lista. Si los objetos
+         * en la lista implementan la interfaz Comparable, este metodo utilizara el método compareTo()
+         * de los objetos para determinar su orden. null: En el contexto de este metodo,
+         * null se pasa como parámetro al sort(). Esto indica que se quiere usar el orden natural
+         * de los objetos de la lista, es decir, se ordenarán según el criterio que esté definido en
+         * la clase de los elementos de la lista (en este caso, la clase Mensaje).
+         * */
 
-            /**
-             *
-             * @param m1 mensaje actual
-             * @param m2 mensaje con el que se va a comprar,
-             *           que es el posterior a este
-             * @return devuelve <0 si el primero va antes
-             *           >0 si va después, y 0 si son iguales
-             *           entonces internamente, te lo ordena
-             *           según lo que hemos nombrado
-             */
-            @Override
-            public int compare(Mensaje m1, Mensaje m2) {
-                return m1.getRemitente().getNombre().compareTo(m2.getRemitente().getNombre());
-            }
-        });
+        mensajesOrdenados.sort(null);
 
         //Convertimos los mensajes a StringBuilder y los returnamos como String
         for (Mensaje m : mensajesOrdenados) {
@@ -87,14 +93,14 @@ public abstract class Persona {
 
     public void borrarMensaje(int posicion) throws MensajeriaException {
 
-        //Si el numero del mensaje es mayor que el buzon, no hay mensajes
-        if (posicion >= buzonEntrada.size()) {
+        //Si el numero del mensaje es mayor que el tamaño del buzon, no existe ese mensaje
+        if (posicion > buzonEntrada.size()) {
             throw new MensajeriaException("No se encuentra");
         }
-        buzonEntrada.remove(posicion);
+        buzonEntrada.remove(posicion - 1);
     }
 
-    public String buscarMensajes(String frase) {
+    public String buscarMensajes(String frase) throws MensajeriaException {
 
         StringBuilder mensajesConLaPalabra = new StringBuilder();
 
@@ -103,6 +109,9 @@ public abstract class Persona {
             if (m.getTexto().contains(frase)) {
                 mensajesConLaPalabra.append(m.getTexto());
             }
+        }
+        if (mensajesConLaPalabra.isEmpty()) {
+            throw new MensajeriaException("Si ningun mensaje tiene la frase lanzamos una excepcion");
         }
         return mensajesConLaPalabra.toString();
     }

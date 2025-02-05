@@ -7,12 +7,11 @@ public class Main {
         Persona alumno2 = new Alumno("Antonio", 35);
 
         Persona maestro1 = new Profesor("Juan", 80);
-        Persona maestro2 = new Profesor("Villaba", 80);
+        Persona maestro2 = new Profesor("Villalba", 80);
 
         try {
-
             System.out.println("Un metodo para poder enviar un mensaje a otra persona");
-           // alumno1.enviarMensaje(alumno2, "Illo fornike o klk");
+            // alumno1.enviarMensaje(alumno2, "Illo fornike o klk");
             maestro1.enviarMensaje(maestro2, "Illo un Vonneuman o klk");
             alumno1.enviarMensaje(maestro2, "Voy a por ti");
 

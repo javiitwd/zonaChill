@@ -1,11 +1,9 @@
 package TEMA6.Boletín1.Ejercicio3;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Mensaje {
-
+public class Mensaje implements Comparable<Mensaje> {
     private Persona remitente;
     private String texto;
     private LocalDateTime fechaYHora;
@@ -33,5 +31,19 @@ public class Mensaje {
         return String.format("De: %s\nTexto: %s\nFecha y hora: %s\n",
                 this.remitente.getNombre(), this.texto,
                 this.fechaYHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
+    }
+    /**
+     * this mensaje actual
+     *
+     * @param o mensaje con el que se va a comprar,
+     *          que es el posterior a este
+     * @return devuelve <0 si el primero va antes
+     * >0 si va después, y 0 si son iguales
+     * entonces internamente, te lo ordena
+     * según lo que hemos nombrado
+     */
+    @Override
+    public int compareTo(Mensaje o) {
+        return this.getRemitente().getNombre().compareTo(o.getRemitente().getNombre());
     }
 }
