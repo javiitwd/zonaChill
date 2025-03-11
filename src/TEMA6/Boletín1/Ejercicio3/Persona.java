@@ -75,7 +75,7 @@ public abstract class Persona {
          * sort(): Es un metodo de la interfaz List que se utiliza para ordenar los
          * elementos de la lista en su orden natural, es decir, según el criterio de
          * ordenación que tenga cada tipo de objeto dentro de la lista. Si los objetos
-         * en la lista implementan la interfaz Comparable, este metodo utilizara el método compareTo()
+         * en la lista implementan la interfaz Comparable, este metodo utilizara el metodo compareTo()
          * de los objetos para determinar su orden. null: En el contexto de este metodo,
          * null se pasa como parámetro al sort(). Esto indica que se quiere usar el orden natural
          * de los objetos de la lista, es decir, se ordenarán según el criterio que esté definido en

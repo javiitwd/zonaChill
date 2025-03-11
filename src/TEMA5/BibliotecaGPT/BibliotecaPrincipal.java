@@ -40,7 +40,7 @@ public class BibliotecaPrincipal {
 
             System.out.println("Seleccione una opción: ");
             System.out.println("1. Agregar Documento");
-            System.out.println("2. Agregar Mostrar documentos almacenados");
+            System.out.println("2. Mostrar documentos almacenados");
             System.out.println("3. Consultar docuemntos más populares");
 
             int op = sc.nextInt();
@@ -89,7 +89,14 @@ public class BibliotecaPrincipal {
                             biblioteca.anadirDocumento(documento);
                         }
                     }
+                    if (tipoDocumento == 2) {
+
+                        System.out.println("Ponga los datos del articulo: ");
+                        
+                    }
                     break;
+
+
             }
         }
     }
