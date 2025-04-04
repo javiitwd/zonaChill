@@ -46,7 +46,8 @@ public class Recetario {
 
 
     public String listadoRecetasConIngredienteOrdenadasPorTiempoPreparacion(String ingrediente) throws RecetaException {
-        SortedMap<Double, String> lista = new TreeMap<>();
+        //Collections.reverseOrder() ordena de mayor a menor en vez de menor a mayor
+        Map<Double, String> lista = new TreeMap<>(Collections.reverseOrder());
 
         for (Receta receta : recetas.values()) {
             if (receta.necesitaIngrediente(ingrediente)) {
@@ -57,9 +58,23 @@ public class Recetario {
             throw new RecetaException("No hay recetas con el ingrediente: " + ingrediente);
         }
         StringBuilder resultado = new StringBuilder();
-        for (Map.Entry<Double, String> entry : lista.entrySet()) {
-            resultado.append(entry.getValue()).append(" - ").append(entry.getKey()).append(" min\n");
+
+        //Map.Entry<K, V> representa un par clave-valor dentro de un Map<K, V>.
+        //Es útil cuando quieres recorrer un Map y obtener tanto la clave como el valor en cada iteración sin hacer búsquedas adicionales.
+        for (Map.Entry<Double, String> elemento : lista.entrySet()) { //el entrySet() obtiene clave y valor de un Map
+
+            resultado.append(elemento.getValue()).append(": ").append(elemento.getKey()).append(" min\n");
         }
+
+
+         /*
+         FORMA MAS FACIL
+         for (Double d : lista.keySet()) {
+
+            resultado.append(lista.get(d)).append(": ").append(d);
+
+            resultado.append(entry.getValue()).append(" - ").append(entry.getKey()).append(" min\n");
+        } */
         return resultado.toString().trim(); // Eliminamos la última línea en blanco
     }
 }

@@ -1,6 +1,4 @@
-package TEMA6.Boletín1.Ejercicio5ConMap.Prueba1;
-
-import java.util.HashMap;
+package TEMA6.Boletín1.Ejercicio5.Ejercicio5ConMap.Prueba1;
 
 /*public class Diccionario {
 

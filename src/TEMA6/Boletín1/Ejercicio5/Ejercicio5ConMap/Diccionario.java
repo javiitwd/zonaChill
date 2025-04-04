@@ -2,7 +2,7 @@
  * El map es una coleccion que en cada posicion
  * tiene 2 elementos, la clave(k) y el valor(v) de dicha clave
  * */
-package TEMA6.Boletín1.Ejercicio5ConMap;
+package TEMA6.Boletín1.Ejercicio5.Ejercicio5ConMap;
 
 import TEMA6.Boletín1.Ejercicio5.DiccionarioException;
 

@@ -1,20 +1,21 @@
 package DocumentoCompartido.Tema6.Ejercicio1;
 
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cliente {
 
     private String nombre;
     private int idCliente;
-    private Set<Ruta> rutasAsignadas;
+    private Map<String, Ruta> rutasAsignadas;
 
     public Cliente(String nombre, int idCliente) {
         this.nombre = nombre;
         this.idCliente = idCliente;
-        rutasAsignadas = new HashSet<>();
+        rutasAsignadas = new HashMap<>();
     }
 
     public String getNombre() {
@@ -33,74 +34,73 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public Set<Ruta> getRutasAsignadas() {
+    public Map<String, Ruta> getRutasAsignadas() {
         return rutasAsignadas;
     }
 
-    public void setRutasAsignadas(Set<Ruta> rutasAsignadas) {
+    public void setRutasAsignadas(Map<String, Ruta> rutasAsignadas) {
         this.rutasAsignadas = rutasAsignadas;
     }
 
     public void annadirRutaACliente(Ruta rutaAAnnadir) throws AgenciaViajesException {
 
-        //Guardamos si tiene la ruta o no, para ello creamos un Stream para convertirlo
-        // a Ruta (rutas asociadas) y despues a String (nombre de las rutas)
-        // finalmente comparamos los nombres de las rutas si alguna coincide con el de la ruta del parametro
-        boolean tieneLaRuta = rutasAsignadas.stream()
-                .flatMap(cliente -> getRutasAsignadas().stream())
-                .map(Ruta::getNombre)
-                // Verifica si algún nombre en ese Stream<String> es igual al de rutaAEliminar.
-                .anyMatch(nombre -> nombre.equals(rutaAAnnadir.getNombre()));
-
-        if (tieneLaRuta) {
-            throw new AgenciaViajesException("La ruta ya está");
+        if (!rutasAsignadas.containsKey(rutaAAnnadir.getNombre())) {
+            rutasAsignadas.put(rutaAAnnadir.getNombre(), rutaAAnnadir);
+            return;
         }
 
-        rutasAsignadas.add(rutaAAnnadir);
+        throw new AgenciaViajesException("Ya tiene la ruta");
     }
 
     public void eliminarRutaACliente(Ruta rutaAEliminar) throws AgenciaViajesException {
 
-        boolean tieneLaRuta = rutasAsignadas.stream()
-                .flatMap(cliente -> getRutasAsignadas().stream())
-                .map(Ruta::getNombre)
-                .anyMatch(nombre -> nombre.equals(rutaAEliminar.getNombre()));
-
-        if (!tieneLaRuta) {
-            throw new AgenciaViajesException("La ruta no está");
+        if (rutasAsignadas.containsKey(rutaAEliminar.getNombre())) {
+            rutasAsignadas.remove(rutaAEliminar.getNombre());
+            return;
         }
 
-        rutasAsignadas.remove(rutaAEliminar);
+        throw new AgenciaViajesException("No tiene la ruta");
     }
 
     public void annadirParadaARutaConcreta(Ruta rutaConcreta, String paradaDeLaRuta) throws AgenciaViajesException {
 
-        //Filtramos la ruta que es igual que es igual a la que recibimos por parametro
-        Ruta rutaAAnnadirParada = rutasAsignadas.stream()
-                .filter(ruta -> ruta.equals(rutaConcreta))
-                .findFirst() //seleccionamos la primera
-                .orElseThrow(() -> new AgenciaViajesException("No se encuentra la ruta"));
+        //obtenemos el valor de la clave que tiene el nombre de la recibida por parametro
+        Ruta rutaBuscada = rutasAsignadas.get(rutaConcreta.getNombre()); //get devuelve null si no lo encuentra
 
-        //añadimos la parada a la ruta que hemos obtenido de Stream
-        rutaAAnnadirParada.getParadasIntermedias().add(paradaDeLaRuta);
+        if (rutaBuscada == null) {
+
+            throw new AgenciaViajesException("No se ha encontrado la ruta");
+        }
+
+        rutaBuscada.annadirParada(paradaDeLaRuta);
+
+        /* 🔴 Antes cometi el error de meter un put() debajo, para añadir los valores a la clave del Map
+         * rutasAsignadas.put(rutaConcreta.getNombre(), rutaBuscada);
+         * ESTA LÍNEA ES INNECESARIA.
+         *
+         * Razón: rutaBuscada es una referencia a un objeto que ya está en el Map, así que modificarlo
+         * ya afecta directamente a rutasAsignadas. No es necesario volver a hacer put().
+         */
+
     }
 
     public void eliminarParadaARutaConcreta(Ruta rutaConcreta, String paradaDeLaRuta) throws AgenciaViajesException {
 
-        //Filtramos la ruta que es igual que es igual a la que recibimos por parametro
-        Ruta rutaAEliminarParada = rutasAsignadas.stream()
-                .filter(ruta -> ruta.equals(rutaConcreta))
-                .findFirst() //seleccionamos la primera
-                .orElseThrow(() -> new AgenciaViajesException("No se encuentra la ruta"));
+        Ruta rutaBuscada = rutasAsignadas.get(rutaConcreta.getNombre());
 
-        //añadimos la parada a la ruta que hemos obtenido de Stream
-        rutaAEliminarParada.getParadasIntermedias().remove(paradaDeLaRuta);
+        if (rutaBuscada == null) {
+
+            throw new AgenciaViajesException("No se ha encontrado la ruta");
+        }
+
+        rutaBuscada.eliminarParada(paradaDeLaRuta);
     }
+
 
     public String mostrarListaDeRutasDelCliente() {
 
         //Creamos un Stream de rutas
-        return rutasAsignadas.stream()
+        return rutasAsignadas.values().stream()
                 //Modificamos con un map para mostrar lo que queremos de las rutas
                 .map(r -> "Nombre: " + r.getNombre()
                         + ", destino: " + r.getDestinoFinal()
@@ -108,9 +108,20 @@ public class Cliente {
                         //Entonces lo convertimos en un Stream y lo ordenamos con sorted() nada entre () ya que queremos orden natura
                         + r.getParadasIntermedias().stream().
                         //Usamos un .collect(Collectors.joining()) para unir cada nombre de la parada (sino irian individual por cada posicion)
-                        sorted().collect(Collectors.joining(", ")))
+                                sorted().collect(Collectors.joining(", ")))
                 //Cuando ya hemos creado nuestro map unimos cada elemento con un .collect(Collectors.joining())
                 //ya que sino no podriamos devolver un UNICO String, debido a que habrian mas (uno por cada posicion)
                 .collect(Collectors.joining(System.lineSeparator()));
+    }
+
+    //recordemos que flatMap() crea un flujo de otros flujos (Aplana los flujos)
+    public List<String> listadosDeParadasDeCliente() {
+
+        //Hago un flujo de rutas
+        return getRutasAsignadas().values().stream()
+                //Con flatMap() hago un flujo de las paradas (ya que antes habiamos hecho un flujo de paradas)
+                .flatMap(ruta -> ruta.getParadasIntermedias().stream())
+                //Guardamos la paradas distintas y ordenadas. Por ultimo devolvemos la lista
+                .distinct().sorted().toList();
     }
 }
