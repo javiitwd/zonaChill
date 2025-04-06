@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class EstacionMeteorologica2 {
+public class EstacionMeteorologica {
 
     private int idUnico;
     private String ubicacion;
     private int altitudMetros;
     private Set<Sensor> sensoresInstalados;
 
-    public EstacionMeteorologica2(int idUnico, String ubicacion, int altitudMetros) {
+    public EstacionMeteorologica(int idUnico, String ubicacion, int altitudMetros) {
         this.idUnico = idUnico;
         this.ubicacion = ubicacion;
         this.altitudMetros = altitudMetros;
@@ -113,7 +113,7 @@ public class EstacionMeteorologica2 {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EstacionMeteorologica2 that = (EstacionMeteorologica2) o;
+        EstacionMeteorologica that = (EstacionMeteorologica) o;
         return idUnico == that.idUnico;
     }
 

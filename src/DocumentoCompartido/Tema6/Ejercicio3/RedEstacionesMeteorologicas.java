@@ -7,13 +7,13 @@ public class RedEstacionesMeteorologicas {
 
     public static final int MAX_METROS_COMPATIBLES = 50;
 
-    private Set<EstacionMeteorologica2> restacionesMeteorologicas;
+    private Set<EstacionMeteorologica> restacionesMeteorologicas;
 
     public RedEstacionesMeteorologicas() {
         restacionesMeteorologicas = new HashSet<>();
     }
 
-    public void transferirSensorAOtraEstacion(EstacionMeteorologica2 estacionConSensor, EstacionMeteorologica2 estacionAInstalarSensor, Sensor sensor) throws RedEstacionesMeteorologicasException {
+    public void transferirSensorAOtraEstacion(EstacionMeteorologica estacionConSensor, EstacionMeteorologica estacionAInstalarSensor, Sensor sensor) throws RedEstacionesMeteorologicasException {
 
         //calculamos la distancia en altitud y lo ponemos en valor absoluto con el Math.abs()
         int distancia = Math.abs(estacionConSensor.getAltitudMetros() - estacionAInstalarSensor.getAltitudMetros());
