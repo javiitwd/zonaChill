@@ -1,0 +1,3 @@
+Encontrada en linea: 1 y columna: 9
+Encontrada en linea: 2 y columna: 23
+Encontrada en linea: 4 y columna: 19

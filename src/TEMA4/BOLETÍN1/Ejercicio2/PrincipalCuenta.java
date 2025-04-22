@@ -1,4 +1,4 @@
-/*Metodo main
+/*Metodo Ejercicio4Pro
 El programa comienza creando un objeto Cuenta (c1) con un saldo inicial de 100 y el titular "Manuel". Si ocurre un error al crear la cuenta (por ejemplo, saldo negativo), se captura y muestra un mensaje de error.
 Un ciclo do-while permite interactuar con la cuenta. En cada iteración:
 Se muestra un menú con opciones:

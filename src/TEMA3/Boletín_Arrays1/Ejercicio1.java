@@ -47,5 +47,5 @@ suma(Array);
 Esta parte llama a un metodo llamado suma, que se encarga
 de calcular la suma de los elementos en posiciones pares
 del array que le pasamos como argumento. En este caso,
-el argumento es Array, que es el array que definimos en main.
+el argumento es Array, que es el array que definimos en Ejercicio4Pro.
 */

@@ -8,7 +8,7 @@ import java.util.SortedMap;
 public class PrincipalPersona {
     static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void Ejercicio4Pro(String[] args) {
         Persona persona = new Persona();
 
         System.out.println("Dirme tu nombre");

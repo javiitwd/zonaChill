@@ -1,7 +1,7 @@
 /*package TEMA4.EXAMENES_TEMA4.GPT_Examen2;
 
 public class PrincipalInformatica {
-    public static void main(String[] args) throws InformaticaException {
+    public static void Ejercicio4Pro(String[] args) throws InformaticaException {
         // Crear productos
         Producto producto1 = new Producto("Laptop", 800.50, 10);
         Producto producto2 = new Producto("Smartphone", 500.00, 15);
