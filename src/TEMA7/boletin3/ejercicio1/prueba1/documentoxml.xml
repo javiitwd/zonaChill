@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<personas>
+    <persona>
+        <dni>234253</dni>
+        <nombre>ManuDT</nombre>
+        <telefono>7563424</telefono>
+        <fecha_nacimiento>12/12/2000</fecha_nacimiento>
+    </persona>
+</personas>
