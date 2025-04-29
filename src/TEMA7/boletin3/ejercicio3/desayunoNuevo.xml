@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<desayuno>
+        
+    <plato>
+                
+        <nombre>Tostadas integrales</nombre>
+                
+        <precio>3.50</precio>
+                
+        <calorias>320</calorias>
+            
+    </plato>
+        
+    <plato>
+                
+        <nombre>Pancakes con sirope</nombre>
+                
+        <precio>6.00</precio>
+                
+        <calorias>700</calorias>
+            
+    </plato>
+        
+    <plato>
+                
+        <nombre>Yogur con frutas</nombre>
+                
+        <precio>4.20</precio>
+                
+        <calorias>250</calorias>
+            
+    </plato>
+        
+    <plato>
+                
+        <nombre>Huevos revueltos</nombre>
+                
+        <precio>5.00</precio>
+                
+        <calorias>480</calorias>
+            
+    </plato>
+        
+    <plato>
+                
+        <nombre>Arroz a la cubana</nombre>
+                
+        <precio>6</precio>
+                
+        <calorias>600</calorias>
+            
+    </plato>
+        
+    <plato>
+                
+        <nombre>Arroz a la cubana</nombre>
+                
+        <precio>6</precio>
+                
+        <calorias>600</calorias>
+            
+    </plato>
+        
+    <plato>
+                
+        <nombre>Arroz a la cubana</nombre>
+                
+        <precio>6</precio>
+                
+        <calorias>600</calorias>
+            
+    </plato>
+    
+    <plato>
+        <nombre>Arroz a la cubana</nombre>
+        <precio>6</precio>
+        <calorias>600</calorias>
+    </plato>
+</desayuno>
