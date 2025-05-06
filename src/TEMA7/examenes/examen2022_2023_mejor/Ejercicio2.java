@@ -112,7 +112,7 @@ public class Ejercicio2 {
             throw new Examen2022_2023Excepcion("No se han encontrados capitulos");
         }
 
-        Pattern pattern = Pattern.compile("\\b(homer|marge|bart|lisa|maggie)\\b\\.*", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("\\b(homer|marge|bart|lisa|maggie)\\b", Pattern.CASE_INSENSITIVE);
 
         for (int i = 0; i < capitulos.getLength(); i++) {
 
@@ -132,9 +132,9 @@ public class Ejercicio2 {
 
                     Matcher matcher = pattern.matcher(palabraActual);
 
-                    if (matcher.matches()) {
+                    if (matcher.find()) {
 
-                        String palabraModificada = "**" + palabraActual + "**";
+                        String palabraModificada = "**" + matcher.group() + "**";
                         sinopsisModificada.append(palabraModificada).append(" ");
 
                     } else {
@@ -157,6 +157,7 @@ public class Ejercicio2 {
             DOMSource documentoActual = new DOMSource(document);
             StreamResult rutaAGuardarNuevoXml = new StreamResult("src/TEMA7/examenes/examen2022_2023_mejor/simpsons3.xml");
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(documentoActual, rutaAGuardarNuevoXml);
         } catch (TransformerException e) {
             throw new Examen2022_2023Excepcion("Error: " + e.getMessage());

@@ -16,6 +16,7 @@ public class Main {
             eliminarNumerosTrasPalabras(file);
             crearFicheroEnElQueTodasLasPalabrasEmpiecenPorMayusculas(file);
             System.out.println("Frases con más de 15 palabras: \n" + frasesConMenos15Palabras(file));
+            palabrasConMas8Letras(file);
         } catch (QuijoteException e) {
             System.out.println(e.getMessage());
         }
@@ -77,21 +78,22 @@ public class Main {
         Pattern patron = Pattern.compile("(?<letras>\\p{L}+)(\\d+)", Pattern.CASE_INSENSITIVE);
 
         try (BufferedReader br = new BufferedReader(new FileReader(file));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(fileNuevo, true))) {
+             BufferedWriter bw = new BufferedWriter(new FileWriter(fileNuevo))) {
 
             String l;
             while ((l = br.readLine()) != null) {
                 Matcher matcher = patron.matcher(l);
-                // Reemplaza todas las coincidencias por solo la parte de letras
-                // El $ indica que vas a usar un grupo capturado.
-                //Las llaves {} se usan cuando el nombre del grupo no es solo un número
+                // Reemplaza todas las coincidencias de la linea con la expresion regular por solo la parte de letras
+                // El $ indica que vas a usar un grupo de captura.
+                // Las llaves {} se usan cuando el nombre del grupo no es solo un número
                 // (como $1, $2), sino un nombre de grupo que tú has definido en la expresión regular con (?<letras>...).
-                String lineaModificada = matcher.replaceAll("${letras}");
+                String lineaModificada = matcher.replaceAll("$1");
+                // String lineaModificada = matcher.replaceAll("${letras}");
+                // String lineaModificada = matcher.replaceAll(m -> m.group(1));
 
                 bw.write(lineaModificada);
                 bw.newLine();
             }
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
             throw new QuijoteException("Ha ocurrido un error");
@@ -102,48 +104,49 @@ public class Main {
 
         File nuevoFile = new File("src/TEMA7/boletin3/ejercicio4/quijoteEnMayusculas.txt");
 
+        //El patron coge una letra siempre y cuando este "aislada" (\\b), ya que e´ solo lo que queremos, la 1ºa letra
+        Pattern patron = Pattern.compile("\\b(?<palabra>\\p{L})", Pattern.UNICODE_CHARACTER_CLASS);
+
         try (BufferedReader br = new BufferedReader(new FileReader(file));
              BufferedWriter bw = new BufferedWriter(new FileWriter(nuevoFile, true))) {
 
             String linea;
             while ((linea = br.readLine()) != null) {
 
-                StringBuilder nuevaLinea = new StringBuilder();
+                Matcher matcher = patron.matcher(linea);
+                String nuevaLinea = matcher.replaceAll(m -> m.group(1).toUpperCase());
 
-                String[] palabras = linea.trim().split("\\s+");
-
-                for (int i = 0; i < palabras.length; i++) {
-
-                    //Como hay lineas vacias de por medio, debemos asegurarnos de que la palabra no esta vacia
-                    if (!palabras[i].isEmpty()) {
-
-                        String palabraActual = palabras[i];
-                        String primeraLetraEnMayuscula = palabraActual.substring(0, 1).toUpperCase();
-
-                        if (palabraActual.length() > 1) {
-
-                            //no ponemos 2 segundo parametro para que llegue hasta el final de la palabra
-                            String restoDeLaPalabra = palabraActual.substring(1).toLowerCase();
-                            String palabraModificada = primeraLetraEnMayuscula + restoDeLaPalabra;
-                            nuevaLinea.append(palabraModificada).append(" ");
-                        } else {
-                            nuevaLinea.append(primeraLetraEnMayuscula).append(" ");
-                        }
-                    }
-                }
-
-                bw.write(nuevaLinea.toString().trim());
+                bw.write(nuevaLinea);
                 bw.newLine();
             }
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    public static void palabrasConMas8Letras(File file) throws QuijoteException {
+
+        Pattern pattern = Pattern.compile("\\p{L}{9,}", Pattern.UNICODE_CHARACTER_CLASS);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                Matcher matcher = pattern.matcher(linea);
+
+                while (matcher.find()) {
+                    System.out.println(matcher.group());
+                }
+            }
+
+        } catch (IOException e) {
+            throw new QuijoteException(e.getMessage());
+        }
+    }
+
     public static String frasesConMenos15Palabras(File file) throws QuijoteException {
 
-        Pattern patronDePalabras = Pattern.compile("\\b\\p{L}+\\d*\\b");
+        Pattern patronDePalabras = Pattern.compile("\\b\\p{L}+\\d*");
 
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -151,32 +154,26 @@ public class Main {
             String l;
             while ((l = br.readLine()) != null) {
 
+                //Hacemos un Array de frases, las frases estaran separadas por .
                 String[] frases = l.split("\\.");
 
-                if (frases.length > 0) {
-                    for (int i = 0; i < frases.length; i++) {
+                for (int i = 0; i < frases.length; i++) {
 
-                        int contadorPalabrasDeLaFrase = 0;
+                    if (frases[i].isBlank()) {
+                        continue;
+                    }
 
-                        //Guardamos la frase mas el patron
-                        Matcher matcher = patronDePalabras.matcher(frases[i]);
+                    //Guardamos las palabrasDeLaFrase de la frase (el tamaño es el numero de palabrasDeLaFrase que hay)
+                    String[] palabrasDeLaFrase = frases[i].split("\\s+");
 
-                        //MIENTRAS ENCONTREMOS PALABRAS AUMENTAMOS EL CONTADOR, NO (IF)
-                        while (matcher.find()) {
-                            contadorPalabrasDeLaFrase++;
-                        }
-
-                        if (contadorPalabrasDeLaFrase > 15) {
-                            sb.append(frases[i]).append(System.lineSeparator());
-                        }
+                    if (palabrasDeLaFrase.length < 15) {
+                        sb.append(frases[i].trim()).append(System.lineSeparator());
                     }
                 }
             }
             return sb.toString();
-
         } catch (IOException e) {
             throw new QuijoteException("Ha ocurrido algún error");
         }
     }
 }
-
