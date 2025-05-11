@@ -4,16 +4,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Ejercicio7 {
+public class Ejercicio9 {
     public static void main(String[] args) {
 
-        Path registroTxt = Path.of("src/TEMA7/boletin4/registro.txt");
-
+        Path rutaNotasTxt = Path.of("src/TEMA7/boletin4/notas.txt");
         try (Scanner sc = new Scanner(System.in)) {
-
-            System.out.println("Ponga su texto:");
+            List<String> lineas = new LinkedList<>();
+            System.out.println("Ponga sus lineas: ");
             while (true) {
 
                 String linea = sc.nextLine();
@@ -22,13 +23,11 @@ public class Ejercicio7 {
                     break;
                 }
 
-                if (linea.isEmpty()) {
-                    System.out.println("La linea debe contener texto.");
-                    continue;
-                }
-
-                Files.writeString(registroTxt, linea + "\n", StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                lineas.add(linea.trim());
             }
+            lineas.sort(null);
+
+            Files.write(rutaNotasTxt, lineas, StandardOpenOption.CREATE);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Ejercicio6 {
     public static void main(String[] args) {
 
-        Path ruta = Path.of("src/TEMA7/boletin4/texto.txt");
+        Path ruta = Path.of("src/TEMA7/boletin4/bitacora.txt");
 
         try (Scanner sc = new Scanner(System.in)) {
 

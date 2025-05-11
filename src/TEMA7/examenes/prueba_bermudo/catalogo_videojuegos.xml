@@ -1,0 +1,30 @@
+<catalogo>
+    <videojuego id="VG001">
+        <titulo>The Witcher 3: Wild Hunt</titulo>
+        <desarrollador>CD Projekt Red</desarrollador>
+        <lanzamiento>2015</lanzamiento>
+        <plataforma>PC, PS4, Xbox One, Switch</plataforma>
+        <genero>RPG de Acción</genero>
+        <descripcion>
+            Un juego de rol de mundo abierto con una narrativa
+            rica y decisiones impactantes.
+            Clasificación PEGI: 18.
+        </descripcion>
+    </videojuego>
+    <videojuego id="VG002">
+        <titulo>Minecraft</titulo>
+        <desarrollador>Mojang Studios</desarrollador>
+        <lanzamiento>2011</lanzamiento>
+        <plataforma>PC, Móvil, Consolas Varias</plataforma>
+        <genero>Sandbox</genero>
+    </videojuego>
+    <videojuego id="VG003">
+        <titulo>Cyberpunk 2077</titulo>
+        <desarrollador>CD Projekt Red</desarrollador>
+        <lanzamiento>2020</lanzamiento>
+        <plataforma>PC, PS5, Xbox Series X/S</plataforma>
+        <genero>RPG de Acción</genero>
+        <descripcion>Aventura de acción y rol de mundo abierto
+            ambientada en Night City. PEGI: 18</descripcion>
+    </videojuego>
+</catalogo>

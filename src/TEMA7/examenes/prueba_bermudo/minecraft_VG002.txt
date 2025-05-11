@@ -1,0 +1,13 @@
+========================================
+FICHA DEL VIDEOJUEGO
+========================================
+ID: VG002
+Titulo: Minecraft
+Desarrollador: Mojang Studios
+Año de Lanzamiento: 2011
+PEGI: no encontrada.
+ID: VG002
+----------------------------------------
+Descripción: 
+no hay descripción
+========================================

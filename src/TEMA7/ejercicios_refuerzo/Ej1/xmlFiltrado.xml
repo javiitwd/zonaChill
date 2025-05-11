@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<galeria>
+    <imagen>
+                
+        <nombre>Atardecer en la playa</nombre>
+                
+        <autor>Ana García</autor>
+                
+        <tamaño>2,5 MB</tamaño>
+                
+        <formato>jpeg</formato>
+                
+        <descripcion>
+            Imagen tomada en verano 
+            <b>con luz cálida</b>
+            .
+        </descripcion>
+            
+    </imagen>
+    <imagen>
+                
+        <nombre>Ciudad nocturna</nombre>
+                
+        <autor>Elena Ríos</autor>
+                
+        <tamaño>3,1 MB</tamaño>
+                
+        <formato>jpeg</formato>
+                
+        <descripcion>
+            Luces y movimiento. 
+            <a href="#">Ver más</a>
+            .
+        </descripcion>
+            
+    </imagen>
+</galeria>

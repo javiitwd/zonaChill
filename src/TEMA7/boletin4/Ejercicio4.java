@@ -1,53 +1,52 @@
 package TEMA7.boletin4;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Ejercicio4 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        int TAM_MAX = 2000;
+        Path ruta = Path.of("src/TEMA7/boletin4/log.txt");
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            Path ruta = Path.of("src/TEMA7/boletin4/log.txt");
-            Files.deleteIfExists(ruta);
-            Files.createFile(ruta);
+        try (Scanner sc = new Scanner(System.in)) {
 
-            System.out.println("Escriba el texto: ");
+            System.out.println("Introduzca sus lineas: ");
+            while (true) {
+                String linea = sc.nextLine();
 
-            String texto;
-            while (!(texto = br.readLine()).equals("fin")) {
+                if (linea.equals("fin")) {
+                    break;
+                }
+                Files.writeString(ruta, linea, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+                Files.writeString(ruta, "\n", StandardOpenOption.APPEND, StandardOpenOption.CREATE);
 
-                int tamActual = (int) Files.size(ruta);
+                if (Files.size(ruta) > 20) {
 
-                if (tamActual > TAM_MAX) {
-                    BasicFileAttributes atributosDelFichero = Files.readAttributes(ruta, BasicFileAttributes.class);
+                    // Ruta en el que voy a guadar este fichero (que ya se ha llenado)
+                    Path rutaNuevoLog = Path.of("src/TEMA7/boletin4/log_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss")) + ".txt");
 
-                    FileTime fechaYHoraDeCreacion = atributosDelFichero.creationTime();
+                    // Guardamos las lineas que tenemos del log actual en una lista (para escribirlas en el log a guardar)
+                    // List<String> lineasLogActual = Files.readAllLines(ruta);
 
-                    LocalDateTime fechaYHoraDeCreacionFiltrado = LocalDateTime.ofInstant(fechaYHoraDeCreacion.toInstant(), ZoneId.systemDefault());
+                    // Escribimos la lista de las lineas que guardamos en la ruta del nuevo log
+                    // Files.write(rutaNuevoLog, lineasLogActual, StandardOpenOption.CREATE);
 
-                    Path nuevaRuta = Path.of("src/TEMA7/boletin4/log_" + fechaYHoraDeCreacionFiltrado.format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss")) + ".txt");
+                    // Renombramos el fichero (por eso no hay que borrarlo abajo, tampoco hace falta
+                    // crear un log nuevo ya que arriba hemos metdio Option.CREATE que crea en caso de que la ruta no exista)
+                    // ya que .move() mueve y renombra
+                    Files.move(ruta, rutaNuevoLog);
 
-                    Files.move(ruta, nuevaRuta);
-                } else {
-                    Files.writeString(ruta, texto, StandardOpenOption.APPEND);
+                    // Eliminamos el log actual (despues se creara automaticamente)
+                    // Files.delete(ruta);
                 }
             }
-
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.toString());
         }
     }
 }

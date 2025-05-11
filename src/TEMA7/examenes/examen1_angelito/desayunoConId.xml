@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<desayuno>
+            
+    
+    <plato id="1001">
+                        
+        
+        <nombre>Tostadas</nombre>
+                        
+        
+        <precio>3.5</precio>
+                        
+        
+        <calorias>450</calorias>
+                    
+    
+    </plato>
+            
+    
+    <plato id="1002">
+                        
+        
+        <nombre>Café con leche</nombre>
+                        
+        
+        <precio>1.2</precio>
+                        
+        
+        <calorias>120</calorias>
+                    
+    
+    </plato>
+            
+    
+    <plato id="1003">
+                        
+        
+        <nombre>Huevos revueltos</nombre>
+                        
+        
+        <precio>5.6</precio>
+                        
+        
+        <calorias>600</calorias>
+                    
+    
+    </plato>
+            
+    
+    <plato id="1004">
+                        
+        
+        <nombre>Churros</nombre>
+                        
+        
+        <precio>4.0</precio>
+                        
+        
+        <calorias>550</calorias>
+                    
+    
+    </plato>
+        
+
+</desayuno>

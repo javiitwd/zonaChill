@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacciones>
+        
+    
+    
+    
+
+    <transaccion id="T002">
+                
+        <cliente>Lucía Romero</cliente>
+                
+        <importe>1200.00</importe>
+                
+        <fecha>2024-04-28</fecha>
+            
+    </transaccion>
+    <transaccion id="T004">
+                
+        <cliente>Ana Torres</cliente>
+                
+        <importe>980.10</importe>
+                
+        <fecha>2024-05-02</fecha>
+            
+    </transaccion>
+    <transaccion id="T001">
+                
+        <cliente>Juan Pérez</cliente>
+                
+        <importe>245.50</importe>
+                
+        <fecha>2024-05-01</fecha>
+            
+    </transaccion>
+    <transaccion id="T003">
+                
+        <cliente>Carlos Mendoza</cliente>
+                
+        <importe>75.90</importe>
+                
+        <fecha>2024-05-03</fecha>
+            
+    </transaccion>
+</transacciones>

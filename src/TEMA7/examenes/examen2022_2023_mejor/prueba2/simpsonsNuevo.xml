@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><simpsons>
+    
+    
+    <capitulo episodio="12" temporada="3">
+        <nombre>El último deseo de Selma</nombre>
+        <sinopsis>Selma decide tener un bebé y, después de que las adopciones no salgan bien, se casa con un hombre llamado Troy McClure. Sin embargo, pronto descubre que su matrimonio no es lo que ella esperaba.</sinopsis>
+        <fecha_emision>9 de diciembre de 1991</fecha_emision>
+    </capitulo>
+    <capitulo episodio="12" temporada="4">
+        <nombre>El heredero de Burns</nombre>
+        <sinopsis>Después de que Mr. Burns sufra un ataque al corazón, decide buscar un heredero para su fortuna. Bart y Lisa creen que tienen una oportunidad, pero sus planes se complican cuando se descubre un oscuro secreto sobre el pasado de Burns.</sinopsis>
+        <fecha_emision>17 de enero de 1993</fecha_emision>
+    </capitulo>
+    <capitulo episodio="2" temporada="5">
+        <nombre>Cape Feare</nombre>
+        <sinopsis>La familia Simpson se muda a una nueva casa para escapar de Sideshow Bob, un payaso vengativo que ha jurado matar a Bart. Sin embargo, Bob logra encontrarlos y comienza un aterrador juego del gato y el ratón.</sinopsis>
+        <fecha_emision>7 de octubre de 1993</fecha_emision>
+    </capitulo>
+    <capitulo episodio="25" temporada="6">
+        <nombre>¿Quién disparó al Sr. Burns? Parte 1</nombre>
+        <sinopsis>Después de que el Sr. Burns bloquee el sol de Springfield, la ciudad se sume en la oscuridad y la desesperación. Cuando Burns es encontrado en el suelo con un disparo, todos en Springfield se convierten en sospechosos.</sinopsis>
+        <fecha_emision>21 de mayo de 1995</fecha_emision>
+    </capitulo>
+</simpsons>

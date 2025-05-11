@@ -1,0 +1,14 @@
+========================================
+FICHA DEL VIDEOJUEGO
+========================================
+ID: VG003
+Titulo: Cyberpunk 2077
+Desarrollador: CD Projekt Red
+Año de Lanzamiento: 2020
+PEGI: 18
+ID: VG003
+----------------------------------------
+Descripción: 
+Aventura de acción y rol de mundo abierto
+ambientada en Night City. PEGI: 18
+========================================

@@ -1,0 +1,57 @@
+<facturas>
+    <factura>
+        <codigo>F-2022-0001</codigo>
+        <cliente>Empresa Uno</cliente>
+        <fecha>2022/15/03</fecha>
+        <importe>1450.50</importe>
+        <detalle>Compra de material de oficina</detalle>
+    </factura>
+
+    <factura>
+        <codigo>F-2021-0123</codigo>
+        <cliente>Cliente Dos</cliente>
+        <fecha>05/12/2021</fecha>
+        <importe>720.00</importe>
+        <detalle>Servicios de consultoría</detalle>
+    </factura>
+
+    <factura>
+        <codigo>F-21-0001</codigo>
+        <cliente>Cliente Tres</cliente>
+        <fecha>10/06/2021</fecha>
+        <importe>980.00</importe>
+        <detalle>Asesoría legal</detalle>
+    </factura>
+
+    <factura>
+        <codigo>F-2023-0456</codigo>
+        <cliente>Cliente Cuatro</cliente>
+        <fecha>25/13/2023</fecha>
+        <importe>1200.00</importe>
+        <detalle>Mantenimiento de servidores</detalle>
+    </factura>
+
+    <factura>
+        <codigo>F-1999-9999</codigo>
+        <cliente>Cliente Cinco</cliente>
+        <fecha>10/01/1999</fecha>
+        <importe>500.00</importe>
+        <detalle>Antiguo contrato</detalle>
+    </factura>
+
+    <factura>
+        <codigo>F-2024-0111</codigo>
+        <cliente>Cliente Seis</cliente>
+        <fecha>01/04/2024</fecha>
+        <importe>mil euros</importe>
+        <detalle>Formación de empleados</detalle>
+    </factura>
+
+    <factura>
+        <codigo>F-2025-4321</codigo>
+        <cliente>Empresa Siete</cliente>
+        <fecha>31/12/2025</fecha>
+        <importe>2300.75</importe>
+        <detalle>Compra de software</detalle>
+    </factura>
+</facturas>
